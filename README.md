@@ -1,2 +1,4 @@
-# web-420
-Web Development 420 
+# WEB 420 RESTful APIs
+## Contributors 
+* Richard Krasso
+* Sarah Jean Baptiste
