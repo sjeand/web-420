@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Composer API
+  version: "1.0"
+  description: Composer API with YAML
+paths: 
+  /findAllComposers:
+    description: returns a list of all composers
+    get:
+      summary: returns a list of composer documents
+      description: |
+        API for returning a list of composers from MongoDB Atlas
+      responses: 
+        "200":
+          description: Composer documents
+        "500":
+            description: Server Exception
+        "501":
+            description: MongoDB Exception
+  /createComposers:
+    description: adds a new composer to query
+    post:
+      summary: Creates a new composer object
+      description: |
+        API for adding new composer objects
+      requestBody:
+        description: Composer's information
+        required: false
+        content:
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - name
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses: 
+        "200":
+          description: Composer documents
+        "500":
+          description: Server Exception
+        "501":
+          description: MongoDB Exception
+  /findComposerById/{id}:
+    description: adds a new composer to query
+    get:
+      summary: returns a composer document
+      description: |
+        API for returning a single composer object from MongoDB
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: The composerId requested by the user
+      responses: 
+        "200":
+          description: Composer documents in JSON format
+        "500":
+          description: Server Exception
+        "501":
+          description: MongoDB Exception
