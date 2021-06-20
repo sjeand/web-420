@@ -15,6 +15,25 @@ var swaggerUIExpress = require('swagger-ui-express');
 var swaggerJSDoc = require('swagger-jsdoc');
 var mongoose = require("mongoose");
 
+var myRoutes = require('./routes/jeanBaptiste-composer-routes.js')
+
+// Link to mongoDB. 
+var mongoDB = "mongodb+srv://admin:5975@buwebdev-cluster-1.levpe.mongodb.net/web420DB?authSource=admin&replicaSet=atlas-sc0j04-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
+
+// Mongoose connection. 
+mongoose.connect(mongoDB, {
+});
+
+mongoose.Promise = global.Promise;
+
+var db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+
+db.once("open", function() {
+    console.log("Application connected to MongoDB instance");
+});
+
 //Variable to express library. 
 var app = express();
 
@@ -26,6 +45,8 @@ app.use(express.json());
 
 //Set app to use express.urlencoded
 app.use(express.urlencoded({extended: true}));
+
+app.use('/api', myRoutes)
 
 //Define options with properties/values. 
 const options = {
