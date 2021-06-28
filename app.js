@@ -15,7 +15,8 @@ var swaggerUIExpress = require('swagger-ui-express');
 var swaggerJSDoc = require('swagger-jsdoc');
 var mongoose = require("mongoose");
 
-var myRoutes = require('./routes/jeanBaptiste-composer-routes.js')
+var composerRoutes = require('./routes/jeanBaptiste-composer-routes.js')
+var personRoutes = require('./routes/jeanBaptiste-person-routes.js')
 
 // Link to mongoDB. 
 var mongoDB = "mongodb+srv://admin:5975@buwebdev-cluster-1.levpe.mongodb.net/web420DB?authSource=admin&replicaSet=atlas-sc0j04-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
@@ -46,7 +47,7 @@ app.use(express.json());
 //Set app to use express.urlencoded
 app.use(express.urlencoded({extended: true}));
 
-app.use('/api', myRoutes)
+app.use('/api', composerRoutes, personRoutes)
 
 //Define options with properties/values. 
 const options = {
