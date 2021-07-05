@@ -4,7 +4,7 @@
   Author: Professor Krasso
   Date: 06/02/2021
   Modified by: Sarah Jean Baptiste
-  Description: Assignment-1.2
+  Description: Web-420
 ========================================================
 */
 
@@ -17,6 +17,7 @@ var mongoose = require("mongoose");
 
 var composerRoutes = require('./routes/jeanBaptiste-composer-routes.js')
 var personRoutes = require('./routes/jeanBaptiste-person-routes.js')
+var userRoutes = require('./routes/jeanBaptiste-session-routes.js')
 
 // Link to mongoDB. 
 var mongoDB = "mongodb+srv://admin:5975@buwebdev-cluster-1.levpe.mongodb.net/web420DB?authSource=admin&replicaSet=atlas-sc0j04-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
@@ -47,7 +48,7 @@ app.use(express.json());
 //Set app to use express.urlencoded
 app.use(express.urlencoded({extended: true}));
 
-app.use('/api', composerRoutes, personRoutes)
+app.use('/api', composerRoutes, personRoutes, userRoutes)
 
 //Define options with properties/values. 
 const options = {
