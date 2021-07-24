@@ -19,6 +19,7 @@ var composerRoutes = require('./routes/jeanBaptiste-composer-routes.js')
 var personRoutes = require('./routes/jeanBaptiste-person-routes.js')
 var userRoutes = require('./routes/jeanBaptiste-session-routes.js')
 var customerRoutes = require('./routes/jeanBaptiste-node-shopper-routes.js')
+var teamRoutes = require('./routes/jeanBaptiste-team-routes.js')
 
 // Link to mongoDB. 
 var mongoDB = "mongodb+srv://admin:5975@buwebdev-cluster-1.levpe.mongodb.net/web420DB?authSource=admin&replicaSet=atlas-sc0j04-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
@@ -49,7 +50,7 @@ app.use(express.json());
 //Set app to use express.urlencoded
 app.use(express.urlencoded({extended: true}));
 
-app.use('/api', composerRoutes, personRoutes, userRoutes, customerRoutes)
+app.use('/api', composerRoutes, personRoutes, userRoutes, customerRoutes, teamRoutes)
 
 //Define options with properties/values. 
 const options = {
